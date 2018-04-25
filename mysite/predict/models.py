@@ -18,7 +18,12 @@ class User(ModelBase):
     user_id = models.CharField()
 
 class Historical(ModelBase):
-    pass
+    stock_id = CharField(max_length = 10)
+
+class historical_stock_price(ModelBase):
+    historical = models.ForeignKey(Historical, on_delete=models.CASCADE)
+    close_price = models.FloatField(default = 0.0)
+    datetime = models.DateTimeField('date recorded')
 
 class Realtime(ModelBase):
     pass
